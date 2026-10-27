@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<navigation-bar title="Calico 咔嚓猫" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+
+    <view class="entry" bindtap="goSearch">
+      <text class="entry-text">搜食物，算这顿多少卡</text>
+      <text class="entry-arrow">›</text>
+    </view>
+
+    <view class="hint" wx:if="{{loading}}">正在读取云数据库…</view>
+
+    <view class="error" wx:elif="{{errMsg}}">
+      <view class="error-title">读取失败</view>
+      <view class="error-msg">{{errMsg}}</view>
+      <view class="error-tip">按顺序检查三件事：</view>
+      <view class="error-tip">1. 云开发是否已开通（环境 prod）</view>
+      <view class="error-tip">2. 集合 foods 是否已创建</view>
+      <view class="error-tip">3. 集合权限是否为「所有用户可读」</view>
+    </view>
+
+    <view class="empty" wx:elif="{{foods.length === 0}}">
+      集合 foods 是空的，点下面的按钮导入 60 条种子数据
+    </view>
+
+    <view class="list" wx:else>
+      <view class="item" wx:for="{{foods}}" wx:key="_id">
+        <view class="item-left">
+          <view class="name">{{item.name}}</view>
+          <view class="cat">{{item.category}}</view>
+        </view>
+        <view class="kcal">{{item.calorie}} kcal / 100g</view>
+      </view>
+    </view>
+
+    <view class="dev" wx:if="{{foods.length < 2}}">
+      <button class="dev-btn" bindtap="seedAll" loading="{{seeding}}" disabled="{{seeding}}">导入 60 条食物（仅一次）</button>
+      <view class="dev-tip">先把 foods 权限临时改成「所有用户可读写」，导完立刻改回「所有用户可读」</view>
+    </view>
+
+    <view class="dev-link" wx:if="{{isDev}}" bindtap="goDebug">▶ 跑一遍 JS 四道题</view>
+
+  </view>
+</scroll-view>

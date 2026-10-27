@@ -1,0 +1,8 @@
+<!--pages/debug/debug.wxml-->
+<navigation-bar title="JS 练习" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <view class="tip">结果同时显示在这里和 Console 面板。每次重新编译都会重跑一遍。</view>
+    <view class="line" wx:for="{{lines}}" wx:key="index">{{item}}</view>
+  </view>
+</scroll-view>

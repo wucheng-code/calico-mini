@@ -1,0 +1,141 @@
+/**index.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fbfbfa;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 16px 40px;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  background: #fff;
+  border: 1px solid #eeedea;
+  border-radius: 12px;
+}
+.entry-text {
+  font-size: 14px;
+  color: #9ca3af;
+}
+.entry-arrow {
+  font-size: 18px;
+  color: #c9c9c4;
+}
+
+.hint,
+.empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.error {
+  padding: 20px;
+  background: #fffafa;
+  border: 1px solid #f3d2d2;
+  border-radius: 12px;
+}
+.error-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #b91c1c;
+  margin-bottom: 8px;
+}
+.error-msg {
+  font-size: 13px;
+  color: #7f1d1d;
+  margin-bottom: 12px;
+  word-break: break-all;
+}
+.error-tip {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.9;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.item + .item {
+  margin-top: 10px;
+}
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid #eeedea;
+  border-radius: 12px;
+}
+.item-left {
+  flex: 1;
+  min-width: 0;
+}
+.name {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1f2328;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.cat {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 2px;
+}
+.kcal {
+  flex: none;
+  margin-left: 12px;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #d97706;
+  font-weight: 500;
+}
+
+.dev {
+  margin-top: 24px;
+}
+.dev-btn {
+  background: #2563eb;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 10px;
+}
+.dev-tip {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #9ca3af;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.dev-link {
+  margin-top: 28px;
+  padding: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #2563eb;
+  background: #f7fafe;
+  border: 1px dashed #d8e6f8;
+  border-radius: 10px;
+}
+

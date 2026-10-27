@@ -1,0 +1,46 @@
+<!--pages/search/search.wxml-->
+<navigation-bar title="找食物" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<view class="search-bar">
+  <input
+    class="input"
+    value="{{keyword}}"
+    placeholder="搜食物，比如 鸡胸、米饭"
+    confirm-type="search"
+    bindinput="onInput"
+  />
+</view>
+
+<scroll-view class="chips" scroll-x type="row">
+  <view
+    wx:for="{{categories}}"
+    wx:key="*this"
+    class="chip {{activeCategory === item ? 'active' : ''}}"
+    data-cat="{{item}}"
+    bindtap="onCategory"
+  >{{item}}</view>
+</scroll-view>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+
+    <view class="hint" wx:if="{{loading}}">搜索中…</view>
+
+    <view class="error" wx:elif="{{errMsg}}">{{errMsg}}</view>
+
+    <view class="empty" wx:elif="{{list.length === 0}}">
+      {{keyword ? '没找到，换个词试试' : '输入关键词开始搜索'}}
+    </view>
+
+    <view class="list" wx:else>
+      <view class="item" wx:for="{{list}}" wx:key="_id">
+        <view class="item-left">
+          <view class="name">{{item.name}}</view>
+          <view class="cat">{{item.category}}</view>
+        </view>
+        <view class="kcal">{{item.calorie}} kcal / 100g</view>
+      </view>
+    </view>
+
+  </view>
+</scroll-view>
