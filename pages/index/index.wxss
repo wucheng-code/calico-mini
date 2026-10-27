@@ -107,11 +107,7 @@ page {
   margin-left: 12px;
   white-space: nowrap;
   font-size: 13px;
-<<<<<<< HEAD
   color: #16a34a;
-=======
-  color: #2563eb;
->>>>>>> dev
   font-weight: 500;
 }
 
