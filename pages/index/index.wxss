@@ -107,7 +107,7 @@ page {
   margin-left: 12px;
   white-space: nowrap;
   font-size: 13px;
-  color: #d97706;
+  color: #16a34a;
   font-weight: 500;
 }
 
