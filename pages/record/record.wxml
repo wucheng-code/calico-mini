@@ -1,0 +1,49 @@
+<!--pages/record/record.wxml-->
+<navigation-bar title="记录" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+
+    <view class="card">
+      <view class="food-name">{{name}}</view>
+      <view class="food-sub">每 100g {{calPer100g}} kcal</view>
+    </view>
+
+    <view class="field">
+      <view class="label">吃了多少克</view>
+      <view class="grams-row">
+        <input
+          class="grams-input"
+          type="digit"
+          value="{{grams}}"
+          bindinput="onGramsInput"
+          placeholder="100"
+        />
+        <text class="unit">克</text>
+      </view>
+    </view>
+
+    <view class="result">
+      <text class="result-num">{{calories}}</text>
+      <text class="result-unit">kcal</text>
+    </view>
+
+    <view class="field">
+      <view class="label">哪一餐</view>
+      <view class="meals">
+        <view
+          wx:for="{{meals}}"
+          wx:key="value"
+          class="meal {{mealType === item.value ? 'active' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="onMeal"
+        >{{item.label}}</view>
+      </view>
+    </view>
+
+    <button class="save-btn" bindtap="save" loading="{{saving}}" disabled="{{saving}}">保存记录</button>
+
+    <view class="tip">热量为估算参考，不构成医学建议</view>
+
+  </view>
+</scroll-view>

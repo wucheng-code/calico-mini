@@ -1,0 +1,117 @@
+/**pages/record/record.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fbfbfa;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px 16px 40px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #eeedea;
+  border-radius: 14px;
+  padding: 18px;
+}
+.food-name {
+  font-size: 20px;
+  font-weight: 500;
+  color: #1f2328;
+}
+.food-sub {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.field {
+  margin-top: 22px;
+}
+.label {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.grams-row {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #eeedea;
+  border-radius: 12px;
+  padding: 0 16px;
+  height: 56px;
+}
+.grams-input {
+  flex: 1;
+  font-size: 22px;
+  font-weight: 500;
+  color: #1f2328;
+}
+.unit {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-left: 8px;
+}
+
+.result {
+  margin-top: 24px;
+  text-align: center;
+}
+.result-num {
+  font-size: 44px;
+  font-weight: 500;
+  color: #d97706;
+  line-height: 1.1;
+}
+.result-unit {
+  font-size: 15px;
+  color: #9ca3af;
+  margin-left: 6px;
+}
+
+.meals {
+  display: flex;
+}
+.meal {
+  flex: 1;
+  text-align: center;
+  padding: 11px 0;
+  margin-right: 8px;
+  background: #fff;
+  border: 1px solid #eeedea;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #6b7280;
+}
+.meal:last-child {
+  margin-right: 0;
+}
+.meal.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+.save-btn {
+  margin-top: 32px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.tip {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: #b8b8b3;
+}

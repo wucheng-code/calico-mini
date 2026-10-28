@@ -26,6 +26,14 @@ Page({
     this.search()
   },
 
+  // 点击一条食物：带着 id / 名称 / 热量跳到记录页
+  onPick(e) {
+    const { id, name, cal } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `/pages/record/record?foodId=${id}&name=${encodeURIComponent(name)}&cal=${cal}`
+    })
+  },
+
   search() {
     const { keyword, activeCategory } = this.data
 

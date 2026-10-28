@@ -33,7 +33,11 @@
     </view>
 
     <view class="list" wx:else>
-      <view class="item" wx:for="{{list}}" wx:key="_id">
+      <view class="item" wx:for="{{list}}" wx:key="_id"
+            data-id="{{item._id}}"
+            data-name="{{item.name}}"
+            data-cal="{{item.calorie}}"
+            bindtap="onPick">
         <view class="item-left">
           <view class="name">{{item.name}}</view>
           <view class="cat">{{item.category}}</view>
