@@ -4,6 +4,8 @@
 const MEAL_LABELS = { 1: '早餐', 2: '午餐', 3: '晚餐', 4: '加餐' }
 const TARGET_CALORIE = 1800   // TODO: W5 改成从 users 表读用户自己的目标
 
+const { pickHomeQuip } = require('../../utils/quips.js')
+
 function todayStr() {
   const d = new Date()
   const pad = n => String(n).padStart(2, '0')
@@ -23,6 +25,7 @@ Page({
     carb: 0,
     sections: [],
     isEmpty: true,
+    homeQuip: '',
     isDev: false
   },
 
@@ -95,6 +98,7 @@ Page({
       carb: this.round(carb),
       sections,
       isEmpty: list.length === 0,
+      homeQuip: pickHomeQuip(total, this.data.target),
       percent: Math.min(100, Math.round(total / this.data.target * 100))
     })
   },

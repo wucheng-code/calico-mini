@@ -47,6 +47,11 @@
             <view class="macro-label">碳水 g</view>
           </view>
         </view>
+
+        <view class="meow">
+          <view class="meow-face">安</view>
+          <view class="meow-text">{{homeQuip}}</view>
+        </view>
       </view>
 
       <!-- 空状态 -->

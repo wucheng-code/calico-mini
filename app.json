@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/search/search",
     "pages/record/record",
+    "pages/review/review",
     "pages/debug/debug"
   ],
   "window": {

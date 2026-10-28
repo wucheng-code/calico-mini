@@ -115,6 +115,33 @@ page {
   margin-top: 2px;
 }
 
+.meow {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed #eeedea;
+  display: flex;
+  align-items: center;
+}
+.meow-face {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: #f5c4b3;
+  color: #712b13;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.meow-text {
+  margin-left: 10px;
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
 .section {
   margin-top: 22px;
 }

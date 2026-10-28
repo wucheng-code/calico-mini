@@ -11,6 +11,8 @@ function safeDecode(s) {
   }
 }
 
+const { pickScene } = require('../../utils/quips.js')
+
 Page({
   data: {
     foodId: '',
@@ -101,8 +103,14 @@ Page({
         createdAt: db.serverDate()
       }
     }).then(() => {
-      wx.showToast({ title: '已记录', icon: 'success' })
-      setTimeout(() => wx.navigateBack(), 800)
+      // 存好了，跳到点评页，让安安说一句话
+      const scene = pickScene(calories, new Date().getHours())
+      wx.redirectTo({
+        url: `/pages/review/review?name=${encodeURIComponent(name)}`
+          + `&grams=${grams}`
+          + `&calories=${calories}`
+          + `&scene=${scene}`
+      })
     }).catch(err => {
       console.error('[record] 保存失败', err)
       this.setData({ saving: false })
