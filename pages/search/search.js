@@ -47,7 +47,8 @@ Page({
     // 关键词：名称或分类名，都能模糊匹配
     if (keyword) {
       const reg = db.RegExp({ regexp: keyword, options: 'i' })
-      parts.push(_.or([{ name: reg }, { category: reg }]))
+      parts.push(_.or([{ name: reg }, { category: reg }, { alias: reg }]))
+
     }
 
     // 分类标签：精确匹配
