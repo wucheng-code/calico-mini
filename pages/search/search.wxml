@@ -37,6 +37,9 @@
             data-id="{{item._id}}"
             data-name="{{item.name}}"
             data-cal="{{item.calorie}}"
+            data-protein="{{item.protein}}"
+            data-fat="{{item.fat}}"
+            data-carb="{{item.carb}}"
             bindtap="onPick">
         <view class="item-left">
           <view class="name">{{item.name}}</view>

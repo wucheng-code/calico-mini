@@ -26,11 +26,16 @@ Page({
     this.search()
   },
 
-  // 点击一条食物：带着 id / 名称 / 热量跳到记录页
+  // 点击一条食物：带着 id / 名称 / 热量 / 三大营养素跳到记录页
   onPick(e) {
-    const { id, name, cal } = e.currentTarget.dataset
+    const d = e.currentTarget.dataset
     wx.navigateTo({
-      url: `/pages/record/record?foodId=${id}&name=${encodeURIComponent(name)}&cal=${cal}`
+      url: `/pages/record/record?foodId=${d.id}`
+        + `&name=${encodeURIComponent(d.name)}`
+        + `&cal=${d.cal}`
+        + `&protein=${d.protein}`
+        + `&fat=${d.fat}`
+        + `&carb=${d.carb}`
     })
   },
 

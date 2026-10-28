@@ -3,42 +3,77 @@
 <scroll-view class="scrollarea" scroll-y type="list">
   <view class="container">
 
-    <view class="entry" bindtap="goSearch">
-      <text class="entry-text">搜食物，算这顿多少卡</text>
-      <text class="entry-arrow">›</text>
-    </view>
-
-    <view class="hint" wx:if="{{loading}}">正在读取云数据库…</view>
+    <view class="hint" wx:if="{{loading}}">正在读取今日记录…</view>
 
     <view class="error" wx:elif="{{errMsg}}">
       <view class="error-title">读取失败</view>
       <view class="error-msg">{{errMsg}}</view>
-      <view class="error-tip">按顺序检查三件事：</view>
+      <view class="error-tip">按顺序检查：</view>
       <view class="error-tip">1. 云开发是否已开通（环境 prod）</view>
-      <view class="error-tip">2. 集合 foods 是否已创建</view>
-      <view class="error-tip">3. 集合权限是否为「所有用户可读」</view>
+      <view class="error-tip">2. 集合 records 是否已创建</view>
+      <view class="error-tip">3. 集合权限是否为「仅创建者可读写」</view>
     </view>
 
-    <view class="empty" wx:elif="{{foods.length === 0}}">
-      集合 foods 是空的，点下面的按钮导入 60 条种子数据
-    </view>
+    <block wx:else>
 
-    <view class="list" wx:else>
-      <view class="item" wx:for="{{foods}}" wx:key="_id">
-        <view class="item-left">
-          <view class="name">{{item.name}}</view>
-          <view class="cat">{{item.category}}</view>
+      <!-- 今日概览 -->
+      <view class="summary">
+        <view class="summary-top">
+          <view>
+            <view class="summary-date">{{date}}</view>
+            <view class="summary-label">今日摄入</view>
+          </view>
+          <view class="summary-num">
+            <text class="big">{{total}}</text>
+            <text class="small"> / {{target}} kcal</text>
+          </view>
         </view>
-        <view class="kcal">{{item.calorie}} kcal / 100g</view>
+
+        <view class="bar">
+          <view class="bar-fill" style="width: {{percent}}%"></view>
+        </view>
+
+        <view class="macros">
+          <view class="macro">
+            <view class="macro-num">{{protein}}</view>
+            <view class="macro-label">蛋白质 g</view>
+          </view>
+          <view class="macro">
+            <view class="macro-num">{{fat}}</view>
+            <view class="macro-label">脂肪 g</view>
+          </view>
+          <view class="macro">
+            <view class="macro-num">{{carb}}</view>
+            <view class="macro-label">碳水 g</view>
+          </view>
+        </view>
       </view>
-    </view>
 
-    <view class="dev" wx:if="{{foods.length < 2}}">
-      <button class="dev-btn" bindtap="seedAll" loading="{{seeding}}" disabled="{{seeding}}">导入 60 条食物（仅一次）</button>
-      <view class="dev-tip">先把 foods 权限临时改成「所有用户可读写」，导完立刻改回「所有用户可读」</view>
-    </view>
+      <!-- 空状态 -->
+      <view class="empty" wx:if="{{isEmpty}}">今天还没记录，点下面按钮开始</view>
 
-    <view class="dev-link" wx:if="{{isDev}}" bindtap="goDebug">▶ 跑一遍 JS 四道题</view>
+      <!-- 按餐次分组 -->
+      <view class="section" wx:for="{{sections}}" wx:key="type" wx:for-item="sec">
+        <view class="section-head">
+          <text class="section-title">{{sec.label}}</text>
+          <text class="section-sub">{{sec.subtotal}} kcal</text>
+        </view>
+        <view class="item" wx:for="{{sec.items}}" wx:key="_id" wx:for-item="food">
+          <view class="item-left">
+            <view class="name">{{food.foodName}}</view>
+            <view class="cat">{{food.grams}} g</view>
+          </view>
+          <view class="kcal">{{food.calorie}} kcal</view>
+        </view>
+      </view>
+
+      <view class="entry" bindtap="goSearch">
+        <text class="entry-text">+ 记录这一顿</text>
+      </view>
+
+      <view class="dev-link" wx:if="{{isDev}}" bindtap="goDebug">▶ 跑一遍 JS 四道题</view>
+
+    </block>
 
   </view>
 </scroll-view>
