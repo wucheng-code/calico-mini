@@ -1,0 +1,76 @@
+/**pages/profile/profile.wxss**/
+page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #fbfbfa;
+}
+.scrollarea {
+  flex: 1;
+  overflow-y: hidden;
+}
+.container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 16px 40px;
+}
+
+.hint {
+  padding: 40px 20px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.field {
+  margin-bottom: 22px;
+}
+.label {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+.row {
+  display: flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 16px;
+  background: #fff;
+  border: 1px solid #eeedea;
+  border-radius: 12px;
+}
+.input {
+  flex: 1;
+  font-size: 17px;
+  color: #1f2328;
+}
+.unit {
+  flex: none;
+  margin-left: 8px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+.help {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+.link {
+  color: #2563eb;
+}
+
+.save {
+  margin-top: 12px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 12px;
+}
+
+.tip {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 12px;
+  color: #b8b8b3;
+  line-height: 1.7;
+}

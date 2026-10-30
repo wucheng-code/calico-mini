@@ -1,0 +1,43 @@
+<!--pages/history/history.wxml-->
+<navigation-bar title="近 7 天" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+
+    <view class="hint" wx:if="{{loading}}">正在统计…</view>
+
+    <view class="error" wx:elif="{{errMsg}}">{{errMsg}}</view>
+
+    <block wx:else>
+
+      <view class="stats">
+        <view class="stat">
+          <view class="stat-num">{{sumTotal}}</view>
+          <view class="stat-label">7 天总计 kcal</view>
+        </view>
+        <view class="stat">
+          <view class="stat-num">{{avg}}</view>
+          <view class="stat-label">日均 kcal</view>
+        </view>
+        <view class="stat">
+          <view class="stat-num">{{maxTotal}}</view>
+          <view class="stat-label">最高一天</view>
+        </view>
+      </view>
+
+      <view class="chart">
+        <view class="col" wx:for="{{bars}}" wx:key="date">
+          <view class="col-value">{{item.total || ''}}</view>
+          <view class="bar-wrap">
+            <view class="bar {{item.isToday ? 'today' : ''}}" style="height: {{item.height}}%"></view>
+          </view>
+          <view class="col-label {{item.isToday ? 'today-text' : ''}}">{{item.label}}</view>
+        </view>
+      </view>
+
+      <view class="empty" wx:if="{{!hasData}}">这 7 天还没有记录</view>
+
+    </block>
+
+  </view>
+</scroll-view>

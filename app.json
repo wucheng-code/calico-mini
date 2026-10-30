@@ -4,6 +4,8 @@
     "pages/search/search",
     "pages/record/record",
     "pages/review/review",
+    "pages/history/history",
+    "pages/profile/profile",
     "pages/debug/debug"
   ],
   "window": {

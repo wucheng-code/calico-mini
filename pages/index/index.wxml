@@ -29,6 +29,11 @@
           </view>
         </view>
 
+        <view class="links">
+          <text class="link-item" bindtap="goHistory">近 7 天趋势 ›</text>
+          <text class="link-item" bindtap="goProfile">设置每日目标 ›</text>
+        </view>
+
         <view class="bar">
           <view class="bar-fill" style="width: {{percent}}%"></view>
         </view>

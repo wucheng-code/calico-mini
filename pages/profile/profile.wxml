@@ -1,0 +1,45 @@
+<!--pages/profile/profile.wxml-->
+<navigation-bar title="我的" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+
+    <view class="hint" wx:if="{{loading}}">读取中…</view>
+
+    <block wx:else>
+      <view class="field">
+        <view class="label">身高</view>
+        <view class="row">
+          <input class="input" type="digit" value="{{height}}" bindinput="onHeight" placeholder="例如 175" />
+          <text class="unit">cm</text>
+        </view>
+      </view>
+
+      <view class="field">
+        <view class="label">体重</view>
+        <view class="row">
+          <input class="input" type="digit" value="{{weight}}" bindinput="onWeight" placeholder="例如 65" />
+          <text class="unit">kg</text>
+        </view>
+      </view>
+
+      <view class="field">
+        <view class="label">每日目标热量</view>
+        <view class="row">
+          <input class="input" type="digit" value="{{targetCalorie}}" bindinput="onTarget" placeholder="例如 1800" />
+          <text class="unit">kcal</text>
+        </view>
+        <view class="help" wx:if="{{suggest}}">
+          参考值 {{suggest}}（体重 × 30），
+          <text class="link" bindtap="useSuggest">用它</text>
+        </view>
+        <view class="help" wx:else>先填体重，会给一个参考值</view>
+      </view>
+
+      <button class="save" bindtap="save" loading="{{saving}}" disabled="{{saving}}">保存</button>
+
+      <view class="tip">目标热量仅用于统计进度，不构成饮食或医学建议。</view>
+    </block>
+
+  </view>
+</scroll-view>

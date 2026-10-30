@@ -37,7 +37,23 @@ Page({
 
   // 用 onShow 而不是 onLoad：从记录页返回时会重新触发，数据能自动刷新
   onShow() {
-    this.loadToday()
+    // 先读目标热量，再查记录，这样进度条百分比用的是最新的目标
+    this.loadTarget().then(() => this.loadToday())
+  },
+
+  // 读用户设置的目标热量；没有设置就用默认 1800
+  loadTarget() {
+    const db = wx.cloud.database()
+    return db.collection('users').get()
+      .then(res => {
+        const u = res.data[0]
+        if (u && u.targetCalorie) {
+          this.setData({ target: Number(u.targetCalorie) })
+        }
+      })
+      .catch(() => {
+        // 没建 users 集合或读取失败都不影响主流程，继续用默认值
+      })
   },
 
   loadToday() {
@@ -105,6 +121,14 @@ Page({
 
   goSearch() {
     wx.navigateTo({ url: '/pages/search/search' })
+  },
+
+  goProfile() {
+    wx.navigateTo({ url: '/pages/profile/profile' })
+  },
+
+  goHistory() {
+    wx.navigateTo({ url: '/pages/history/history' })
   },
 
   goDebug() {
